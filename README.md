@@ -28,11 +28,11 @@ La estructura básica del proyecto será:
 music/
 │
 ├── index.html
+├── LICENSE
+├── README.md
 │
-├── css/
-│   └── global.css
-│
-└── README.md
+└── css/
+    └── global.css
 ```
 
 ### `index.html`
@@ -66,28 +66,37 @@ Para organizar el trabajo colaborativo se utilizará la siguiente estructura de 
 main
  │
  └── develop
-      ├── mario
-      ├── alma
-      └── angelica
+      ├── html
+      └── css
 ```
 
 ### `main`
 
-Es la rama principal del proyecto. Contendrá las versiones estables del sitio web.
+Es la rama principal del proyecto. Contendrá las versiones estables y terminadas del sitio web.
 
 ### `develop`
 
-Es la rama de desarrollo. Se utilizará como base para integrar los cambios realizados por los integrantes del equipo antes de llevarlos a `main`.
+Es la rama de desarrollo. Se utilizará como base para integrar los cambios realizados en las ramas de trabajo antes de llevar el proyecto a `main`.
 
-### Ramas individuales
+### Rama `html`
 
-Dentro de `develop`, cada integrante tendrá su propia rama para trabajar de manera independiente:
+Esta rama estará destinada al desarrollo y modificación de la estructura HTML del proyecto, principalmente del archivo:
 
-* `mario`
-* `alma`
-* `angelica`
+```text
+index.html
+```
 
-Cada integrante deberá realizar sus cambios en su propia rama y posteriormente integrarlos a `develop`.
+En esta rama se trabajará la estructura y el contenido de la página web.
+
+### Rama `css`
+
+Esta rama estará destinada al desarrollo de los estilos personalizados del proyecto, principalmente del archivo:
+
+```text
+css/global.css
+```
+
+En esta rama se trabajará la apariencia visual de la página.
 
 ---
 
@@ -96,15 +105,25 @@ Cada integrante deberá realizar sus cambios en su propia rama y posteriormente 
 El flujo de trabajo recomendado será:
 
 1. Clonar el repositorio.
-2. Obtener o actualizar las ramas existentes.
-3. Trabajar sobre la rama correspondiente.
+2. Actualizar la información del repositorio local.
+3. Crear o utilizar la rama correspondiente.
 4. Realizar los cambios necesarios.
 5. Agregar los archivos modificados.
 6. Crear un commit con los cambios.
-7. Actualizar la rama antes de integrar cambios.
-8. Subir los cambios al repositorio remoto.
-9. Integrar las modificaciones en `develop`.
-10. Una vez que el proyecto esté listo y estable, integrar `develop` en `main`.
+7. Subir los cambios a GitHub.
+8. Integrar las ramas `html` y `css` en `develop`.
+9. Una vez que el proyecto esté terminado y estable, integrar `develop` en `main`.
+
+El flujo general será:
+
+```text
+main
+  │
+  └── develop
+       ├── html
+       │
+       └── css
+```
 
 ---
 
@@ -143,10 +162,10 @@ git branch
 Para crear una nueva rama:
 
 ```bash
-git branch mario
+git branch html
 ```
 
-Las ramas permiten que diferentes integrantes trabajen en funcionalidades independientes sin modificar directamente la rama principal.
+Las ramas permiten separar el trabajo y desarrollar diferentes partes del proyecto sin modificar directamente la rama principal.
 
 ---
 
@@ -173,7 +192,7 @@ git add .
 Guarda los cambios preparados en el historial local del repositorio.
 
 ```bash
-git commit -m "Agrega contenido de bandas de rock"
+git commit -m "Agrega estructura HTML"
 ```
 
 Es recomendable utilizar mensajes de commit claros y descriptivos para identificar fácilmente qué cambios se realizaron.
@@ -200,43 +219,53 @@ Este comando es importante para mantener nuestro trabajo actualizado antes de re
 
 # Ejemplo de flujo de trabajo
 
-Un integrante puede comenzar su trabajo de la siguiente manera:
+Para trabajar en la parte HTML, se puede utilizar la rama `html`:
 
 ```bash
-git clone URL_DEL_REPOSITORIO
-
-cd music
-
-git branch
+git checkout html
 ```
 
-Después puede cambiar a su rama de trabajo:
+Se realizan los cambios necesarios en `index.html`.
 
-```bash
-git checkout mario
-```
-
-Realiza sus modificaciones en `index.html` o `css/global.css`.
-
-Posteriormente agrega los cambios:
+Después se agregan los cambios:
 
 ```bash
 git add .
 ```
 
-Crea un commit:
+Se crea un commit:
 
 ```bash
-git commit -m "Agrega información de bandas de rock"
+git commit -m "Agrega estructura de la página"
 ```
 
-Antes de continuar trabajando, puede actualizar su repositorio:
+Finalmente, se envían los cambios a GitHub:
 
 ```bash
-git pull
+git push origin html
 ```
 
-Finalmente, los cambios pueden ser enviados al repositorio remoto y posteriormente integrados en la rama `develop`.
+Para trabajar en los estilos CSS, se utiliza la rama `css`:
+
+```bash
+git checkout css
+```
+
+Se realizan los cambios en:
+
+```text
+css/global.css
+```
+
+Después:
+
+```bash
+git add .
+git commit -m "Agrega estilos globales"
+git push origin css
+```
+
+Posteriormente, las ramas `html` y `css` se integrarán en `develop`.
 
 ---
 
@@ -252,17 +281,18 @@ Durante el desarrollo del proyecto se busca reforzar especialmente el uso de:
 * `git commit` — Registrar cambios en el historial.
 * `git pull` — Obtener los cambios del repositorio remoto.
 
-Además, se busca comprender cómo organizar un proyecto utilizando una rama principal (`main`), una rama de desarrollo (`develop`) y ramas individuales para cada integrante del equipo.
+Además, se busca comprender cómo organizar un proyecto utilizando una rama principal (`main`), una rama de desarrollo (`develop`) y ramas específicas para trabajar en diferentes partes del proyecto (`html` y `css`).
 
 ---
 
-## Equipo
+## Ramas del proyecto
 
-| Integrante | Rama       |
-| ---------- | ---------- |
-| Mario      | `mario`    |
-| Alma       | `alma`     |
-| Angelica   | `angelica` |
+| Rama      | Función                          |
+| --------- | -------------------------------- |
+| `main`    | Rama principal y versión estable |
+| `develop` | Rama de desarrollo e integración |
+| `html`    | Desarrollo de la estructura HTML |
+| `css`     | Desarrollo de los estilos CSS    |
 
 ---
 
@@ -271,3 +301,12 @@ Además, se busca comprender cómo organizar un proyecto utilizando una rama pri
 **Nombre:** Music
 **Tema:** Bandas de rock
 **Tecnologías:** HTML5, CSS3, Bootstrap 5, Git y GitHub
+
+---
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para conocer los términos y condiciones de uso, modificación y distribución del proyecto.
+
+
+
